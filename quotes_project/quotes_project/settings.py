@@ -96,39 +96,26 @@ WSGI_APPLICATION = "quotes_project.wsgi.application"
 # }
 
 # --- PostgreSQL Database ---
-DB_ENGINE = regdata["DB_ENGINE"]
-DB_USER = regdata["DB_USER"]
-DB_PASSWORD = regdata["DB_PASSWORD"]
-DB_NAME = regdata["DB_NAME"]
-DB_HOST = regdata["DB_HOST"]
-DB_PORT = regdata["DB_PORT"]
-
 DATABASES = {
     "default": {
-        "ENGINE": f"{DB_ENGINE}",
-        "NAME": f"{DB_NAME}",
-        "USER": f"{DB_USER}",
-        "PASSWORD": f"{DB_PASSWORD}",
-        "HOST": f"{DB_HOST}",
-        "PORT": f"{DB_PORT}",
+        "ENGINE": env("DB_ENGINE"),
+        "NAME": env("DB_NAME"),
+        "USER": env("DB_USER"),
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST": env("DB_HOST"),
+        "PORT": env("DB_PORT"),
     }
 }
 
 # --- ElephantSQL Database ---
-ELEPHANT_ENGINE = regdata["ELEPHANT_ENGINE"]
-ELEPHANT_PASSWORD = regdata["ELEPHANT_PASSWORD"]
-ELEPHANT_DB_NAME_USER = regdata["ELEPHANT_DB_NAME_USER"]
-ELEPHANT_HOST = regdata["ELEPHANT_HOST"]
-ELEPHANT_PORT = regdata["ELEPHANT_PORT"]
-
 # DATABASES = {
 #     "default": {
-#         "ENGINE": f"{ELEPHANT_ENGINE}",
-#         "NAME": f"{ELEPHANT_DB_NAME_USER}",
-#         "USER": f"{ELEPHANT_DB_NAME_USER}",
-#         "PASSWORD": f"{ELEPHANT_PASSWORD}",
-#         "HOST": f"{ELEPHANT_HOST}",
-#         "PORT": f"{ELEPHANT_PORT}",
+#         "ENGINE": env("ELEPHANT_ENGINE"),
+#         "NAME": env("ELEPHANT_DB_NAME_USER"),
+#         "USER": env("ELEPHANT_DB_NAME_USER"),
+#         "PASSWORD": env("ELEPHANT_PASSWORD"),
+#         "HOST": env("ELEPHANT_HOST"),
+#         "PORT": env("ELEPHANT_PORT"),
 #     }
 # }
 
@@ -181,3 +168,13 @@ APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"
 APSCHEDULER_RUN_NOW_TIMEOUT = 25  # Seconds
 
 OPEN_AI_KEY = env("OPEN_AI_KEY")
+
+EMAIL_BACKEND = env("EMAIL_BACKEND")
+EMAIL_HOST = env("EMAIL_HOST")
+EMAIL_PORT = env("EMAIL_PORT")
+EMAIL_STARTTLS = False
+EMAIL_USE_SSL = True
+EMAIL_USE_TLS = False
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = env("DEFAULT_FROM_EMAIL")
